@@ -40,23 +40,29 @@ function game(){
     let computerScore = 0;
     for(let i = 0; i < 5; i++){
         computerSelection = getComputerChoice()
-        playerSelection = prompt("rock paper scissors")
+        playerSelection = prompt("rock paper scissors");
         let returnString = singleRound(playerSelection, computerSelection);
         if (returnString.slice(4, 8) === "win!"){
-            playerScore++
+            playerScore++;
+            console.log(returnString);
         }
         else if(returnString.slice(4,8) === "lose"){
-            computerScore++
+            computerScore++;
+            console.log(returnString);
+        }
+        else{
+            console.log(returnString);
         }
     }
-    if (playerScore < computerScore){
-        return "You win!"
+
+    if (playerScore > computerScore){
+        return `You win! Player score: ${playerScore} Computer score: ${computerScore}`;
     }
-    else if(playerScore > computerScore){
-        return "You lose"
+    else if(playerScore < computerScore){
+        return `You lose! Player score: ${playerScore} Computer score: ${computerScore}`;
     }
     else{
-        return "Tie"
+        return `Tie ${playerScore} = ${computerScore}`;
     }
 }
 
