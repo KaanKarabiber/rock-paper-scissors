@@ -39,8 +39,8 @@ function game(){
     let playerScore = 0;
     let computerScore = 0;
     for(let i = 0; i < 5; i++){
-        computerSelection = getComputerChoice()
-        playerSelection = prompt("rock paper scissors");
+        let computerSelection = getComputerChoice()
+        let playerSelection = prompt("rock paper scissors");
         let returnString = singleRound(playerSelection, computerSelection);
         if (returnString.slice(4, 8) === "win!"){
             playerScore++;
