@@ -10,7 +10,8 @@ function getComputerChoice(){
         return "paper";
     }  
 }
-function singleRound(playerSelection, computerSelection){
+function singleRound(playerChoice, computerSelection){
+    playerSelection = playerChoice.toLowerCase()
     if (playerSelection === computerSelection){
         return "Tie"
     }
@@ -32,7 +33,32 @@ function singleRound(playerSelection, computerSelection){
     else if(playerSelection === "rock" && computerSelection === "paper"){
         return "You lose! paper beats rock"
     }
+
 }
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(singleRound(playerSelection, computerSelection))
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    for(let i = 0; i < 5; i++){
+        computerSelection = getComputerChoice()
+        playerSelection = prompt("rock paper scissors")
+        let returnString = singleRound(playerSelection, computerSelection);
+        if (returnString.slice(4, 8) === "win!"){
+            playerScore++
+        }
+        else if(returnString.slice(4,8) === "lose"){
+            computerScore++
+        }
+    }
+    if (playerScore < computerScore){
+        return "You win!"
+    }
+    else if(playerScore > computerScore){
+        return "You lose"
+    }
+    else{
+        return "Tie"
+    }
+}
+
+
+console.log(game());
