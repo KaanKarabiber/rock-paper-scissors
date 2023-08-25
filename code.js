@@ -65,14 +65,20 @@ function singleRound(playerChoice, computerSelection) {
     else {
         return `Tie ${playerScore} = ${computerScore}`;
     }
-} */
+} 
+console.log(game());*/
 
-
-/* console.log(game()); */
-const rockBtn = document.querySelector('.rock');
-rockBtn.addEventListener('click', () => {
-    playerChoice = 'rock';
+function play(e){
+    playerChoice = `${e.target.id}`;
     const computerSelection = getComputerChoice();
     console.log(singleRound(playerChoice, computerSelection));
-});
+}
 
+
+const rockBtn = document.querySelector('#rock');
+const scissorBtn = document.querySelector('#scissors');
+const paperBtn = document.querySelector('#paper');
+
+rockBtn.addEventListener('click', play);
+scissorBtn.addEventListener('click', play);
+paperBtn.addEventListener('click', play);
