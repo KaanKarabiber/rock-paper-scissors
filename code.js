@@ -48,15 +48,17 @@ function play(e) {
         existingMatchResult.remove();
         existingScoreTable.remove();
     }
+    
     const matchResult = document.createElement('div');
     const scoreTable = document.createElement('div');
     scoreTable.classList.add('score-table');
     matchResult.classList.add('match-result');
+    gameScore(result, matchResult, scoreTable);
     scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
     matchResult.textContent = result;
     document.body.append(matchResult);
     document.body.append(scoreTable);
-    gameScore(result, matchResult, scoreTable);
+    
 }
 
 function gameScore(result, matchResult, scoreTable){
