@@ -56,17 +56,29 @@ function play(e) {
     matchResult.textContent = result;
     document.body.append(matchResult);
     document.body.append(scoreTable);
-    gameScore(result);
+    gameScore(result, matchResult, scoreTable);
 }
 
-function gameScore(matchResult){
+function gameScore(result, matchResult, scoreTable){
     if (playerScore < 5 && computerScore < 5){
-        if (matchResult.slice(4, 8) === "win!") {
+        if (result.slice(4, 8) === "win!") {
             playerScore++;
+            if(playerScore >= 5){
+                matchResult.remove();
+                scoreTable.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
+            }
         }
-        else if (matchResult.slice(4, 8) === "lose") {
+        else if (result.slice(4, 8) === "lose") {
             computerScore++;
+            if(computerScore >= 5){
+                matchResult.remove()
+                scoreTable.textContent = `You lose. Score: ${playerScore} - ${computerScore}`;
+            }
         }
+    }
+    else{
+        matchResult.remove();
+        scoreTable.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
     }
 }
 
