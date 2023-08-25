@@ -36,45 +36,42 @@ function singleRound(playerChoice, computerSelection) {
     }
 
 }
-/* function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let computerSelection = getComputerChoice()
-        let playerSelection = prompt("rock paper scissors");
-        let returnString = singleRound(playerSelection, computerSelection);
-        if (returnString.slice(4, 8) === "win!") {
-            playerScore++;
-            console.log(returnString);
-        }
-        else if (returnString.slice(4, 8) === "lose") {
-            computerScore++;
-            console.log(returnString);
-        }
-        else {
-            console.log(returnString);
-        }
-    }
 
-    if (playerScore > computerScore) {
-        return `You win! Player score: ${playerScore} Computer score: ${computerScore}`;
-    }
-    else if (playerScore < computerScore) {
-        return `You lose! Player score: ${playerScore} Computer score: ${computerScore}`;
-    }
-    else {
-        return `Tie ${playerScore} = ${computerScore}`;
-    }
-} 
-console.log(game());*/
-
-function play(e){
+function play(e) {
     playerChoice = `${e.target.id}`;
     const computerSelection = getComputerChoice();
-    console.log(singleRound(playerChoice, computerSelection));
+    const result = singleRound(playerChoice, computerSelection);
+    const existingMatchResult = document.querySelector('.match-result');
+    const existingScoreTable = document.querySelector('.score-table');
+
+    if (existingMatchResult && existingScoreTable) {
+        existingMatchResult.remove();
+        existingScoreTable.remove();
+    }
+    const matchResult = document.createElement('div');
+    const scoreTable = document.createElement('div');
+    scoreTable.classList.add('score-table');
+    matchResult.classList.add('match-result');
+    scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
+    matchResult.textContent = result;
+    document.body.append(matchResult);
+    document.body.append(scoreTable);
+    gameScore(result);
 }
 
+function gameScore(matchResult){
+    if (playerScore < 5 && computerScore < 5){
+        if (matchResult.slice(4, 8) === "win!") {
+            playerScore++;
+        }
+        else if (matchResult.slice(4, 8) === "lose") {
+            computerScore++;
+        }
+    }
+}
 
+let playerScore = 0;
+let computerScore = 0;
 const rockBtn = document.querySelector('#rock');
 const scissorBtn = document.querySelector('#scissors');
 const paperBtn = document.querySelector('#paper');
