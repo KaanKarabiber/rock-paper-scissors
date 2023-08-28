@@ -66,6 +66,7 @@ function gameScore(result, matchResult, scoreTable){
             if(playerScore >= 5){
                 matchResult.remove();
                 scoreTable.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
+                playAgain(scoreTable, matchResult);
             }
         }
         else if (result.slice(4, 8) === "lose") {
@@ -75,6 +76,7 @@ function gameScore(result, matchResult, scoreTable){
             if(computerScore >= 5){
                 matchResult.remove()
                 scoreTable.textContent = `You lose. Score: ${playerScore} - ${computerScore}`;
+                playAgain(scoreTable, matchResult);
             }
         }
         else{
@@ -85,7 +87,28 @@ function gameScore(result, matchResult, scoreTable){
     else{
         matchResult.remove();
         scoreTable.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
+        playAgain();
     }
+}
+function playAgain(scoreTable, matchResult){
+    buttonFunction(true);
+    const playAgainButton = document.createElement('button');
+    playAgainButton.classList.add('btn');
+    playAgainButton.textContent = 'Play again';
+    document.body.append(playAgainButton);
+    playAgainButton.addEventListener('click', () => {
+        computerScore = 0;
+        playerScore = 0;
+        playAgainButton.remove();
+        matchResult.remove();
+        scoreTable.remove();
+        buttonFunction(false);
+    });
+}
+function buttonFunction(mode){
+    rockBtn.disabled = mode;
+    scissorBtn.disabled = mode;
+    paperBtn.disabled = mode;
 }
 
 let playerScore = 0;
