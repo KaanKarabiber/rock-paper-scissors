@@ -52,8 +52,6 @@ function play(e) {
     scoreTable.classList.add('score-table');
     matchResult.classList.add('match-result');
     gameScore(result, matchResult, scoreTable);
-    scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
-    matchResult.textContent = result;
     document.body.append(matchResult);
     document.body.append(scoreTable);
     
@@ -63,6 +61,8 @@ function gameScore(result, matchResult, scoreTable){
     if (playerScore < 5 && computerScore < 5){
         if (result.slice(4, 8) === "win!") {
             playerScore++;
+            scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
+            matchResult.textContent = result;
             if(playerScore >= 5){
                 matchResult.remove();
                 scoreTable.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
@@ -70,10 +70,16 @@ function gameScore(result, matchResult, scoreTable){
         }
         else if (result.slice(4, 8) === "lose") {
             computerScore++;
+            scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
+            matchResult.textContent = result;
             if(computerScore >= 5){
                 matchResult.remove()
                 scoreTable.textContent = `You lose. Score: ${playerScore} - ${computerScore}`;
             }
+        }
+        else{
+            scoreTable.textContent = `Player score ${playerScore} - ${computerScore} Computer score`; 
+            matchResult.textContent = result;
         }
     }
     else{
