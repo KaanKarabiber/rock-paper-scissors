@@ -17,22 +17,22 @@ function singleRound(playerChoice, computerSelection) {
         return "Tie"
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! rock beats scissors"
+        return "You win! Rock beats scissors"
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! scissors beats paper"
+        return "You win! Scissors beats paper"
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! paper beats rock"
+        return "You win! Paper beats rock"
     }
     else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You lose! rock beats scissors"
+        return "You lose! Rock beats scissors"
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You lose! scissors beats paper"
+        return "You lose! Scissors beats paper"
     }
     else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You lose! paper beats rock"
+        return "You lose! Paper beats rock"
     }
 
 }
@@ -43,12 +43,10 @@ function play(e) {
     const result = singleRound(playerChoice, computerSelection);
     const existingMatchResult = document.querySelector('.match-result');
     const existingScoreTable = document.querySelector('.score-table');
-
     if (existingMatchResult && existingScoreTable) {
         existingMatchResult.remove();
         existingScoreTable.remove();
     }
-    
     const matchResult = document.createElement('div');
     const scoreTable = document.createElement('div');
     scoreTable.classList.add('score-table');

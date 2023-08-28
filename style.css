@@ -1,0 +1,28 @@
+body{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    text-align: center;
+}
+.header{
+    text-align: center;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    margin: 25px;
+}
+.btn{
+    background-color: burlywood;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: large;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.score-table, .match-result{
+    font-size: large;
+}
